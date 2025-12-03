@@ -26,6 +26,9 @@ class Module
     #[ORM\Column]
     private ?int $dureeEstimee = null;
 
+    #[ORM\ManyToOne(inversedBy: 'modules')]
+    private ?Formation $formation = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -75,6 +78,18 @@ class Module
     public function setDureeEstimee(int $dureeEstimee): static
     {
         $this->dureeEstimee = $dureeEstimee;
+
+        return $this;
+    }
+
+    public function getFormation(): ?Formation
+    {
+        return $this->formation;
+    }
+
+    public function setFormation(?Formation $formation): static
+    {
+        $this->formation = $formation;
 
         return $this;
     }
